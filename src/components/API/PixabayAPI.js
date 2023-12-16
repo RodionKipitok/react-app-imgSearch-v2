@@ -9,8 +9,6 @@ const fetchImages = async (searchTerm, page) => {
     .get(`${url}${filter}`)
     .then(response => response.data);
 
-  console.log(response);
-
   return response;
 };
 

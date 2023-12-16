@@ -3,7 +3,6 @@ import css from './ImageGalleryItem.module.css';
 import { nanoid } from 'nanoid';
 
 const ImageGalleryItems = ({ queryImg, onOpenModalImg }) => {
-  // console.log(onOpenModalImg);
   return (
     <ul className={css.ImageGallery}>
       {queryImg.map(item => (

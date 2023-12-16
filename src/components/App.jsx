@@ -72,24 +72,19 @@ class App extends Component {
   };
 
   render() {
-    const { isLoading, itemImg} = this.state;
+    const { isLoading, itemImg, imgData, showModal } = this.state;
 
     return (
       <>
         <Searchbar addStateImg={this.addStateImg} />
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            <ImageGalleryItems
-              onOpenModalImg={this.toggaleModal}
-              queryImg={itemImg}
-            />
-            {itemImg.length > 0 && <Button loadMore={this.loadMore} />}
-            {this.state.showModal && (
-              <Modal imgData={this.state.imgData} onClose={this.toggaleModal} />
-            )}
-          </>
+        {showModal && <Modal imgData={imgData} onClose={this.toggaleModal} />}
+        <ImageGalleryItems
+          onOpenModalImg={this.toggaleModal}
+          queryImg={itemImg}
+        />
+        {isLoading && <Loader />}
+        {itemImg.length > 0 && (
+          <Button loadMore={this.loadMore} isLoading={isLoading} />
         )}
       </>
     );

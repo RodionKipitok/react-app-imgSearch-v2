@@ -35,8 +35,6 @@ class App extends Component {
   }
 
   addStateImg = async searchName => {
-    const { searchNameImg } = this.state;
-
     try {
       if (searchName === '') {
         alert('пустая строка');

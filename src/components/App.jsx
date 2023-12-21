@@ -31,11 +31,18 @@ class App extends Component {
         console.log(error);
       }
     }
+    console.log('componetDidUpdate');
   }
 
   addStateImg = async searchName => {
+    const { searchNameImg } = this.state;
+
     try {
-      if (searchName !== '') {
+      if (searchName === '') {
+        alert('пустая строка');
+      } else if (this.state.searchNameImg === searchName) {
+        alert('уже был такой запрос');
+      } else {
         this.setState({ isLoading: true, currentPage: 1 }); // Сброс currentPage перед новым поиском
         const getImages = await fetchImages(searchName);
 
